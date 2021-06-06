@@ -17,8 +17,8 @@ public class Jdbc {
         ResultSet rs = null;
         try {
 //            组测数据库驱动的两种方法：
-//            Class.forName("oracle.jdbc.driver.OracleDriver");
-            DriverManager.registerDriver(new OracleDriver());
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+//            DriverManager.registerDriver(new OracleDriver());
             conn=DriverManager.getConnection(
                     "jdbc:oracle:thin:@120.77.80.134:1521:orcl", "scott", "tiger");
             PreparedStatement pstm=conn.prepareStatement(sql);
@@ -35,7 +35,7 @@ public class Jdbc {
                 return true;
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }finally {
             try {
