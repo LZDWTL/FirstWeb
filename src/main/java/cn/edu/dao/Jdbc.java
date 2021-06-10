@@ -1,4 +1,4 @@
-package cn.edu;
+package cn.edu.dao;
 
 import oracle.jdbc.OracleDriver;
 
@@ -15,19 +15,21 @@ public class Jdbc {
 //        select * from users where username='张三' and password='123';
         Connection conn = null;
         ResultSet rs = null;
+        PreparedStatement pstm=null;
         try {
 //            组测数据库驱动的两种方法：
             Class.forName("oracle.jdbc.driver.OracleDriver");
 //            DriverManager.registerDriver(new OracleDriver());
             conn=DriverManager.getConnection(
                     "jdbc:oracle:thin:@120.77.80.134:1521:orcl", "scott", "tiger");
-            PreparedStatement pstm=conn.prepareStatement(sql);
+            pstm=conn.prepareStatement(sql);
             pstm.setString(1,username);
             pstm.setString(2,password);
             rs=pstm.executeQuery();
             if (rs.next()){
                 try {
                     rs.close();
+                    pstm.close();
                     conn.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -40,6 +42,7 @@ public class Jdbc {
         }finally {
             try {
                 rs.close();
+                pstm.close();
                 conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
