@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            <form action="addUser2" method="get">
+            <form action="addUser" method="get">
                 <tr>
                     <td><input type="text" name="id" style="width: 100px"></td>
                     <td><input type="text" name="username" style="width: 200px"></td>

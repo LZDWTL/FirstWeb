@@ -21,16 +21,16 @@
             </tr>
         </thead>
         <tbody>
-            <form action="updateUser2" method="get">
+            <form action="updateUser" method="get">
                 <tr>
                     <td>
-                        <input type="text" name="id" style="width: 100px" value="<%=request.getAttribute("id")%>" readonly>
+                        <input type="text" name="id" style="width: 100px" value="<%=request.getParameter("id")%>" readonly>
                     </td>
                     <td>
-                        <input type="text" name="name" style="width: 200px" placeholder="<%=request.getAttribute("username")%>">
+                        <input type="text" name="username" style="width: 200px" placeholder="<%=request.getParameter("username")%>">
                     </td>
                     <td>
-                        <input type="text" name="pswd" style="width: 200px" placeholder="<%=request.getAttribute("password")%>">
+                        <input type="text" name="password" style="width: 200px" placeholder="<%=request.getParameter("password")%>">
                     </td>
                     <td>
 <%--                        <a href="updateUser2?id=<%=request.getAttribute("id")%>">确认修改</a>--%>

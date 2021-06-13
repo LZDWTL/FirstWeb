@@ -20,6 +20,10 @@
 
 </head>
 <body>
+    <form action="selectUser" method="get">
+        <input type="text" name="retrieve">
+        <input type="submit" value="搜索">
+    </form>
     <table>
         <thead>
             <tr>
@@ -40,7 +44,7 @@
                 <td><%=userList.get(i).getUsername() %></td>
                 <td><%=userList.get(i).getPassword() %></td>
                 <td>
-                    <a href="updateUser1?id=<%=userList.get(i).getId()%>&username=<%=userList.get(i).getUsername() %>&password=<%=userList.get(i).getPassword() %>">修改</a>
+                    <a href="updateUser.jsp?id=<%=userList.get(i).getId()%>&username=<%=userList.get(i).getUsername() %>&password=<%=userList.get(i).getPassword() %>">修改</a>
                     <a href="deleteUser?id=<%=userList.get(i).getId()%>">删除</a>
 <%--                    为什么写/user/deleteUser 会出错？--%>
                 </td>

@@ -11,6 +11,7 @@ import java.util.List;
 public interface IUserDao {
     List<User> viewUser();
     void deleteUser(int id);
-    void updateUser(int id,String username,String password);
-    void addUser(int id,String username,String password);
+    void updateUser(User user);
+    void addUser(User user);
+    List<User> selectUser(String username);
 }
