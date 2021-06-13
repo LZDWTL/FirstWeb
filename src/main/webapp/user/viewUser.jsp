@@ -14,6 +14,7 @@
         table,tr,th,td{
             border:1px solid black;
             border-collapse: collapse;
+            text-align: center;
         }
     </style>
 
@@ -39,7 +40,7 @@
                 <td><%=userList.get(i).getUsername() %></td>
                 <td><%=userList.get(i).getPassword() %></td>
                 <td>
-                    <a href="alterUser?id=<%=userList.get(i).getId()%>">修改</a>
+                    <a href="updateUser1?id=<%=userList.get(i).getId()%>&username=<%=userList.get(i).getUsername() %>&password=<%=userList.get(i).getPassword() %>">修改</a>
                     <a href="deleteUser?id=<%=userList.get(i).getId()%>">删除</a>
 <%--                    为什么写/user/deleteUser 会出错？--%>
                 </td>
@@ -47,6 +48,11 @@
             <%
                 }
             %>
+            <tr>
+                <td colspan="4">
+                    <a href="addUser.jsp">增加</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>

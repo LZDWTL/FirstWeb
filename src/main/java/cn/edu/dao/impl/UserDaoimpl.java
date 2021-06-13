@@ -2,6 +2,7 @@ package cn.edu.dao.impl;
 
 import cn.edu.bean.User;
 import cn.edu.dao.IUserDao;
+import oracle.jdbc.driver.OracleDriver;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -74,4 +75,58 @@ public class UserDaoimpl implements IUserDao {
             }
         }
     }
+
+    @Override
+    public void updateUser(int id, String username, String password) {
+        Connection conn=null;
+        String sql="update users set username=? ,password=? where id=?";
+        PreparedStatement pstm=null;
+
+        try {
+            DriverManager.registerDriver(new OracleDriver());
+            conn=DriverManager.getConnection("jdbc:oracle:thin:@120.77.80.134:1521:orcl","scott","tiger");
+            pstm=conn.prepareStatement(sql);
+            pstm.setInt(3,id);
+            pstm.setString(1,username);
+            pstm.setString(2,password);
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                pstm.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void addUser(int id, String username, String password) {
+        Connection conn=null;
+        String sql="insert into users values(?,?,?)";
+        PreparedStatement pstmt=null;
+
+        try {
+            DriverManager.registerDriver(new OracleDriver());
+            conn=DriverManager.getConnection("jdbc:oracle:thin:@120.77.80.134:1521:orcl","scott","tiger");
+            pstmt=conn.prepareStatement(sql);
+
+            pstmt.setInt(1,id);
+            pstmt.setString(2,username);
+            pstmt.setString(3,password);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
